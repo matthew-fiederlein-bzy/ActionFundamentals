@@ -13,14 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.2
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2.7.0
-        with:
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hello-world-docker-action:latest
+        
       - name: Run Docker image
-        uses: ./.github/workflows/hello-world-docker-action
+        uses: ./hello-world-docker-action
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: 'matthew-fiederlein-bzy'
+
       - name: Print the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
